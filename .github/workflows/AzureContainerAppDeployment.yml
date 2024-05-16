@@ -22,24 +22,19 @@ jobs:
     - name: 'Login via Azure CLI'
       uses: azure/login@v1
       with:
-        client-id: ${{ secrets.AZURE_CLIENT_ID }}
-        tenant-id: ${{ secrets.AZURE_TENANT_ID }}
-        subscription-id: ${{ secrets.AZURE_SUBSCRIPTION_ID }}
+        creds: ${{secrets.AZURE_CREDENTIALS}}
     
     - uses: azure/docker-login@v1
       with:
-        login-server: cloudquicklabsacr.azurecr.io
+        login-server: acrbz2rqmviaywx4.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t cloudquicklabsacr.azurecr.io/myapp:${{ github.sha }}
-        docker push cloudquicklabsacr.azurecr.io/myapp:${{ github.sha }}     
+        docker build . -t acrbz2rqmviaywx4.azurecr.io/myapp:${{ github.sha }}
+        docker push acrbz2rqmviaywx4.azurecr.io/myapp:${{ github.sha }}     
       
     - uses: azure/webapps-deploy@v2
       with:
-        app-name: 'CloudQuickLabsWebApp'
-        images: 'cloudquicklabsacr.azurecr.io/myapp:${{ github.sha }}'
+        app-name: 'bz2rqmviaywx4'
+        images: 'acrbz2rqmviaywx4.azurecr.io/myapp:${{ github.sha }}'
     
-    - name: Azure logout
-      run: |
-        az logout
