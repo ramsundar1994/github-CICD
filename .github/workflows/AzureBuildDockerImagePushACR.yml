@@ -14,9 +14,9 @@ jobs:
     - uses: actions/checkout@v2
     - uses: azure/docker-login@v1
       with:
-        login-server: cloudquicklabsacr.azurecr.io
+        login-server: acrbz2rqmviaywx4.azurecr.io
         username: ${{ secrets.REGISTRY_USERNAME }}
         password: ${{ secrets.REGISTRY_PASSWORD }}
     - run: |
-        docker build . -t cloudquicklabsacr.azurecr.io/myapp:${{ github.sha }}
-        docker push cloudquicklabsacr.azurecr.io/myapp:${{ github.sha }}
+        docker build . -t acrbz2rqmviaywx4.azurecr.io/myapp:${{ github.sha }}
+        docker push acrbz2rqmviaywx4.azurecr.io/myapp:${{ github.sha }}
