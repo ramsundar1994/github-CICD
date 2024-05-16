@@ -23,6 +23,6 @@ jobs:
         creds: ${{secrets.AZURE_CREDENTIALS}}
     - name : Azure group list 
       run: |
-        az group list
+        az group list --output table
           
      
