@@ -4,6 +4,10 @@ on:
 jobs:
   build:
     runs-on: ubuntu-latest
+    defaults:
+      run:
+        shell: bash
+        working-directory: github
     steps:
       - uses: Azure/login@v2.1.0
         with:
