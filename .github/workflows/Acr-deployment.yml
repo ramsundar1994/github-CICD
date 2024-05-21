@@ -10,5 +10,5 @@ jobs:
           creds: ${{secrets.AZURE_CREDENTIALS}}
       -  name: Azure ACR deployment
          run: | 
-            az deployment group create --resource-group Devops-RG --template-file github-CICD/github/workflow/acr.bicep
+            az deployment group create --resource-group Devops-RG --template-file '/github/workflow/acr.bicep'
   
