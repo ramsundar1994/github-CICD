@@ -23,9 +23,20 @@ jobs:
   CI-Deploy:
     runs-on: ubuntu-latest
     needs: build
+    defaults:
+      run:
+        shell: bash
+        working-directory: dotnet
     steps:
-     - name : Push docker image for CI
-       run: |
-        docker build . -t acrbz2rqmviaywx4.azurecr.io/myapp:CI-Deploy
-        docker push acrbz2rqmviaywx4.azurecr.io/myapp:CI-Deploy
+    - uses: actions/checkout@v2
+    - uses: azure/docker-login@v1
+      with:
+        login-server: acrbz2rqmviaywx4.azurecr.io
+        username: ${{ secrets.REGISTRY_USERNAME }}
+        password: ${{ secrets.REGISTRY_PASSWORD }}
+    
+    - name : Push docker image for CI
+    - run: |
+          docker build . -t acrbz2rqmviaywx4.azurecr.io/myapp:CI-Deploy
+          docker push acrbz2rqmviaywx4.azurecr.io/myapp:CI-Deploy
     
