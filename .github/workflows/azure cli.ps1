@@ -1,0 +1,1 @@
+az deployment group create --resource-group Devops-RG --template-file Appservice.bicep
