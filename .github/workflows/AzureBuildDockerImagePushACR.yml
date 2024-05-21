@@ -36,7 +36,7 @@ jobs:
         password: ${{ secrets.REGISTRY_PASSWORD }}
     
     - name : Push docker image for CI
-    - run: |
+      run: |
           docker build . -t acrbz2rqmviaywx4.azurecr.io/myapp:CI-Deploy
           docker push acrbz2rqmviaywx4.azurecr.io/myapp:CI-Deploy
     
