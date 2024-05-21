@@ -26,5 +26,6 @@ jobs:
     steps:
      - name : Push docker image for CI
        run: |
+        docker build . -t acrbz2rqmviaywx4.azurecr.io/myapp:CI-Deploy
         docker push acrbz2rqmviaywx4.azurecr.io/myapp:CI-Deploy
     
