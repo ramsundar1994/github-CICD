@@ -13,5 +13,5 @@ jobs:
          with:
             subscriptionId: 48662256-1551-4a3d-8e37-335744834f2e
             resourceGroupName: Devops-RG
-            template: ./acr.bicep 
+            template: ./github/workflow/acr.bicep 
   
