@@ -4,7 +4,7 @@ on:
   workflow_dispatch:
 
 jobs:
-  build:
+  build: 
     runs-on: ubuntu-latest
     defaults:
       run:
@@ -20,3 +20,11 @@ jobs:
     - run: |
         docker build . -t acrbz2rqmviaywx4.azurecr.io/myapp:${{ github.sha }}
         docker push acrbz2rqmviaywx4.azurecr.io/myapp:${{ github.sha }}
+  CI-Deploy:
+    runs-on: ubuntu-latest
+    needs: build
+    steps:
+     - name : Push docker image for CI
+       run: |
+        docker push acrbz2rqmviaywx4.azurecr.io/myapp:CI-Deploy
+    
