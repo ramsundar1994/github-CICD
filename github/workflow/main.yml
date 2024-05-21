@@ -1,1 +1,14 @@
-# github-CICD
+name: Azure ACR deployment@2
+on:
+  workflow_dispatch:
+jobs:
+  build:
+    runs-on: ubuntu-latest
+    steps:
+      - uses: Azure/login@v2.1.0
+        with:
+          creds: ${{secrets.AZURE_CREDENTIALS}}
+      -  name: Azure ACR deployment
+         run: | 
+            az deployment group create --resource-group Devops-RG --template-file /github/workflow/acr.bicep
+ 
