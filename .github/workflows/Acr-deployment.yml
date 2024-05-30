@@ -9,6 +9,10 @@ jobs:
         shell: bash
         working-directory: github
     steps:
+      - name: Checkout code
+        uses: actions/checkout@main
+        
+      - name: Login to Azure
       - uses: Azure/login@v2.1.0
         with:
           creds: ${{secrets.AZURE_CREDENTIALS}}
